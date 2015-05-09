@@ -1,0 +1,83 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red160\green32\blue240;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs24 \cf0 Setup instructions:
+\b0 \
+\
+Move the mBullet folder into your Matlab directory. You will also need to have Matlab load the Java .jar file that contains the Bullet source code. For instructions on doing this, open the \'93startup.m\'94 file found in this folder.\
+\
+
+\b Use:
+\b0 \
+\
+
+\i Javadoc:
+\i0 \
+All the physics engine functions are part of jBullet, a java port of the Bullet engine. Documentation of the available classes can be found at the jBullet javadoc site:\
+\
+{\field{\*\fldinst{HYPERLINK "http://jbullet.advel.cz/javadoc/"}}{\fldrslt http://jbullet.advel.cz/javadoc/}}\
+\
+
+\i Syntax:
+\i0 \
+In general, you can use example jBullet code natively in Matlab with a few alterations. Pretend you\'92re coding Matlab while using the Java functions. Matlab is much more laid-back about variable types. So the Java might be something like:\
+\
+		Transform myTransform = new Transform();\
+\
+Converting to Matlab-speak:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 		myTransform = Transform();\
+\
+Also, in Java, 4.f means \'93A floating point number (not an integer) of value four.\'94 Matlab will only take 4 and doesn\'92t need a type. A few other differences: != in Java vs. ~= in Matlab, for loop structure, and commenting syntax.\
+\
+
+\i Importing classes:\
+
+\i0 The startup file loads the Java .jar file into the dynamic file path, but each Matlab file you create still needs to import the specific jBullet classes you\'92re going to use. For example:\
+\
+\pard\pardeftab720
+
+\f1\fs20 \cf0 import \cf2 com.bulletphysics.dynamics.constraintsolver.*\cf0 ;
+\fs24 \
+
+\fs20 import \cf2 javax.vecmath.*\cf0 ;
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 \
+See some of the demo files for other examples.\
+\
+
+\b Useful Java tricks in Matlab:\
+
+\i\b0 Figuring out available functions:
+\i0 \
+methodsview command (example: methodsview com.bulletphysics.linearmath) displays all available java methods within that particular class. In the Matlab world: \'93what functions does this java class give me?\'94\
+\
+
+\i Figuring out important variables:\
+
+\i0 fieldnames(object) shows the fields within a particular object. Example:\
+\pard\pardeftab720
+
+\f1\fs20 \cf0         dispatchInf = dynamicWorld.getDispatchInfo;
+\fs24 \
+
+\fs20         fieldnames(dispatchInf)
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0 \cf0 In the Matlab world: \'93I\'92ve created a new object. Now what parameters can I change in it?\'94\
+\
+
+\b Important Bullet notes:\
+\
+
+\b0 Bullet does everything in HALF-lengths. For instance, if you define a cube [1,1,1], you get a 2x2x2 cube (i.e. -1 to +1 in every direction). For my Matlab functions, I chose to do everything in terms of actual dimensions due to personal confusion.\
+\
+\
+}
