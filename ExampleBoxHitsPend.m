@@ -11,7 +11,7 @@ close all
 import com.bulletphysics.collision.broadphase.AxisSweep3;
 import com.bulletphysics.collision.broadphase.DispatcherInfo;
 import com.bulletphysics.collision.dispatch.CollisionConfiguration;
-import com.bulletphysics.collision.dispatch.CollisionDispatcher;
+import com.bulletphysics.collision.dispatch.CollisionDispatcher;!
 import com.bulletphysics.collision.dispatch.CollisionObject;
 import com.bulletphysics.collision.dispatch.DefaultCollisionConfiguration;
 import com.bulletphysics.collision.shapes.BoxShape;
@@ -36,7 +36,7 @@ gravity = -10;
 %individually if desired.
 objProp = struct('restitution',0.1,'friction',0.5,'linDamp',0,'angDamp',0);
 
-%Define ground characteristics.
+%Define ground characteristics.git
 groundOrig = [0,0,-3]; %Center position
 groundDim = [5,5,.5]; %Dimensions
 groundAng = [0 pi/4 0]; %Euler angle rotation
